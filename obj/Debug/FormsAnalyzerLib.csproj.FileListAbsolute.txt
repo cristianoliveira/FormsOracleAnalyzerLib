@@ -1,0 +1,5 @@
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsAnalizerLib\bin\Debug\FormsAnalizerLib.dll
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsAnalizerLib\bin\Debug\FormsAnalizerLib.pdb
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsAnalizerLib\obj\Debug\FormsAnalizerLib.dll
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsAnalizerLib\obj\Debug\FormsAnalizerLib.pdb
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsAnalizerLib\obj\Debug\FormsAnalyzerLib.csprojResolveAssemblyReference.cache
