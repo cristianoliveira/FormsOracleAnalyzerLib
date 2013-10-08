@@ -26,7 +26,7 @@ namespace OracleFormsAnalyzerLib.Objetos
 
         public bool isScrollbarVisible()
         {
-            return mostrarBarraRolagem == "Sim";
+            return mostrarBarraRolagem == "Sim" || mostrarBarraRolagem == "Yes";
         }
     }
 }

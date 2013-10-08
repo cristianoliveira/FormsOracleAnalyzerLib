@@ -33,7 +33,7 @@ namespace OracleFormsAnalyzerLib.Objetos
         
         public bool hasCanvas()
         {
-            return canvas != null ? !string.IsNullOrEmpty(canvas) : false;
+            return !string.IsNullOrEmpty(canvas);
         }
 
         public bool hasHints()
@@ -82,12 +82,85 @@ namespace OracleFormsAnalyzerLib.Objetos
             }
         }
 
-        public string getAlinhamento()
+        public TipoDado getTipoDado(Linguagem pLinguagem)
         {
-            if ((justificacao == "Final" || justificacao == "Direita"))
-                return "Direita";
+            if (pLinguagem == Linguagem.Portugues)
+            {
+                switch (tiposDados)
+                {
+                    case "Número": return TipoDado.Numero;
+                    case "Data": return TipoDado.Data;
+                    default: return TipoDado.Caracter;
+                }
+            }
             else
-                return "Esquerda";
+            {
+                switch (tiposDados)
+                {
+                    case "Number": return TipoDado.Numero;
+                    case "Date": return TipoDado.Data;
+                    default: return TipoDado.Caracter;
+                }
+            }
+        }
+
+        public string getAlinhamento(Linguagem pLinguagem = Linguagem.Portugues)
+        {
+            if(pLinguagem == Linguagem.Portugues)
+            {
+                if ((justificacao == "Final" || justificacao == "Direita"))
+                    return "Direita";
+                else
+                    return "Esquerda";
+            }
+            else
+            {
+                if ((justificacao == "End" || justificacao == "Right"))
+                    return "Direita";
+                else
+                    return "Esquerda";
+            }
+        }
+
+        public TipoItem getTipoItem(Linguagem pLinguagem)
+        {
+            if (pLinguagem == Linguagem.Portugues)
+            {
+                switch (tipoItem)
+                {
+                    case "Item de Texto"   : return TipoItem.ItemTexto;
+                    case "Item da Lista"   : return TipoItem.ItemLista;
+                    case "Tecla"           : return TipoItem.Botao;
+                    case "Caixa de Seleção": return TipoItem.CheckBox;
+                    case "Grupo de Opções" : return TipoItem.RadioGroup;
+                    case "Imagem"          : return TipoItem.Imagem;
+                    default                : return TipoItem.Indefinido;
+                }
+            }
+            else
+            {
+                switch (tipoItem)
+                {
+                    case "Text Item"   : return TipoItem.ItemTexto;
+                    case "List Item"   : return TipoItem.ItemLista;
+                    case "PushButton"  : return TipoItem.Botao;
+                    case "CheckBox"    : return TipoItem.CheckBox;
+                    case "Radio Group" : return TipoItem.RadioGroup;
+                    case "Image"       : return TipoItem.Imagem;
+                    default            : return TipoItem.Indefinido;
+                }
+            }
         }
     }
+
+    public enum TipoItem 
+    {
+        ItemTexto, ItemLista, Botao, CheckBox, RadioGroup, Indefinido, Imagem
+    }
+
+    public enum TipoDado
+    {
+        Numero, Data, Caracter
+    }
+
 }

@@ -2,3 +2,4 @@ E:\projetos\GitHub\FormsOracleAnalyzerLib\obj\Debug\FormsAnalizerLib.dll
 E:\projetos\GitHub\FormsOracleAnalyzerLib\obj\Debug\FormsAnalizerLib.pdb
 E:\projetos\GitHub\FormsOracleAnalyzerLib\bin\Debug\FormsAnalizerLib.dll
 E:\projetos\GitHub\FormsOracleAnalyzerLib\bin\Debug\FormsAnalizerLib.pdb
+E:\projetos\GitHub\FormsOracleAnalyzerLib\obj\Debug\OracleFormsAnalyzerLib.csprojResolveAssemblyReference.cache
