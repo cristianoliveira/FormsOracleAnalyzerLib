@@ -11,6 +11,9 @@ namespace OracleFormsAnalyzerLib.Objetos
         public string topicoLivroAjuda      { get; set; }
         public string ativado               { get; set; }
         public string justificacao          { get; set; }
+        public string variasLinhas { get; set; }
+        public string restriçãoMaiusculasMinusculas { get; set; }
+        public string numeroItensExibidos   { get; set; }
         public string itemAnteriorNavegacao { get; set; }
         public string proximoItemNavegacao  { get; set; }
         public string tiposDados            { get; set; }
@@ -23,10 +26,15 @@ namespace OracleFormsAnalyzerLib.Objetos
         public string nomeFonte             { get; set; }
         public string tamanhoFonte          { get; set; }
         public string pesoFonte             { get; set; }
+        public string corFundo              { get; set; }
         public string prompt                { get; set; }
         public string nomeFontePrompt       { get; set; }
         public string tamanhoFontePrompt    { get; set; }
         public string pesoFontePrompt       { get; set; }
+        public string limiteConexaoPrompt   { get; set; }
+        public string alinhamentoPrompt     { get; set; }
+        public string deslocamentoConexaoPrompt     { get; set; }
+        public string deslocamentoAlinhamentoPrompt { get; set; }
         public string dica                  { get; set; }
         public string dicaFerramenta        { get; set; }
         public string altura                { get; set; }
@@ -38,7 +46,7 @@ namespace OracleFormsAnalyzerLib.Objetos
 
         public bool hasHints()
         {
-            return !string.IsNullOrEmpty(dica) || !string.IsNullOrEmpty(dicaFerramenta);
+            return !string.IsNullOrEmpty(dica) && dica.Length>5;
         }
 
         public float getFloatAltura()
@@ -82,65 +90,51 @@ namespace OracleFormsAnalyzerLib.Objetos
             }
         }
 
-        public TipoDado getTipoDado(Linguagem pLinguagem)
+        public TipoDado getTipoDado()
         {
-            if (pLinguagem == Linguagem.Portugues)
+            switch (tiposDados)
             {
-                switch (tiposDados)
-                {
-                    case "Número": return TipoDado.Numero;
-                    case "Data": return TipoDado.Data;
-                    default: return TipoDado.Caracter;
-                }
-            }
-            else
-            {
-                switch (tiposDados)
-                {
-                    case "Number": return TipoDado.Numero;
-                    case "Date": return TipoDado.Data;
-                    default: return TipoDado.Caracter;
-                }
+                case "Número": return TipoDado.Numero;
+                case "Data": return TipoDado.Data;
+                case "Number": return TipoDado.Numero;
+                case "Date": return TipoDado.Data;
+                default: return TipoDado.Caracter;
             }
         }
 
-        public string getAlinhamento(Linguagem pLinguagem = Linguagem.Portugues)
+        public Alinhamento getAlinhamento()
         {
-            if(pLinguagem == Linguagem.Portugues)
-            {
-                if ((justificacao == "Final" || justificacao == "Direita"))
-                    return "Direita";
-                else
-                    return "Esquerda";
-            }
+            if (string.IsNullOrEmpty(justificacao))
+                return Alinhamento.Indefinido;
+            else if (new string[] { "Final", "Direita", "End", "Right" }.Contains(justificacao))
+                return Alinhamento.Direita;
             else
-            {
-                if ((justificacao == "End" || justificacao == "Right"))
-                    return "Direita";
-                else
-                    return "Esquerda";
-            }
+                return Alinhamento.Esquerda;
+        }
+        
+        public Alinhamento getAlinhamentoPrompt()
+        {
+            if (string.IsNullOrEmpty(alinhamentoPrompt))
+                return Alinhamento.Indefinido;
+            else if (new string[] { "Final", "Direita", "End", "Right" }.Contains(alinhamentoPrompt))
+                return Alinhamento.Direita;
+            else if (alinhamentoPrompt.ToUpper() == "CENTRALIZADO")
+                return Alinhamento.Centralizado;
+            else
+                return Alinhamento.Esquerda;
         }
 
-        public TipoItem getTipoItem(Linguagem pLinguagem)
+        public TipoItem getTipoItem()
         {
-            if (pLinguagem == Linguagem.Portugues)
+            switch (tipoItem)
             {
-                switch (tipoItem)
-                {
                     case "Item de Texto"   : return TipoItem.ItemTexto;
                     case "Item da Lista"   : return TipoItem.ItemLista;
                     case "Tecla"           : return TipoItem.Botao;
                     case "Caixa de Seleção": return TipoItem.CheckBox;
                     case "Grupo de Opções" : return TipoItem.RadioGroup;
                     case "Imagem"          : return TipoItem.Imagem;
-                    default                : return TipoItem.Indefinido;
-                }
-            }
-            else
-            {
-                switch (tipoItem)
-                {
+                     /* Inglês */
                     case "Text Item"   : return TipoItem.ItemTexto;
                     case "List Item"   : return TipoItem.ItemLista;
                     case "PushButton"  : return TipoItem.Botao;
@@ -148,7 +142,53 @@ namespace OracleFormsAnalyzerLib.Objetos
                     case "Radio Group" : return TipoItem.RadioGroup;
                     case "Image"       : return TipoItem.Imagem;
                     default            : return TipoItem.Indefinido;
-                }
+              }
+         }
+        
+        public float getFloatDeslocamentoConexaoPrompt()
+        {
+        	try {
+        		return float.Parse(deslocamentoConexaoPrompt);
+        	} catch (Exception) {
+        		return 0;
+        	}
+        }
+        
+        public float getDeslocamentoAlinhamentoPrompt()
+        {
+        	try {
+        		return float.Parse(deslocamentoAlinhamentoPrompt);
+        	} catch (Exception) {
+        		return 0;
+        	}
+        }
+        
+        public int getIntNumeroItensExibidos()
+        {
+        	try {
+        		return int.Parse(numeroItensExibidos);
+        	} catch (Exception) {
+        		return  0;
+        	}
+        }
+
+        public bool isEnabled()
+        {
+            return ativado != null? ativado.ToUpper() == "SIM" : false;
+        }
+
+        public bool isMultilinha()
+        {
+            return variasLinhas!= null? variasLinhas.ToUpper() == "SIM" : false;
+        }
+
+        public Case getTipoCase()
+        {
+            switch (restriçãoMaiusculasMinusculas)
+            {
+                case "Superior": return Case.Upper; 
+                case "Misto": return Case.Misto;
+                default: return Case.Lower;
             }
         }
     }
@@ -163,4 +203,13 @@ namespace OracleFormsAnalyzerLib.Objetos
         Numero, Data, Caracter
     }
 
+    public enum Case
+    {
+        Upper, Lower, Misto
+    }
+
+    public enum Alinhamento
+    {
+        Direita, Esquerda, Centralizado, Indefinido
+    }
 }

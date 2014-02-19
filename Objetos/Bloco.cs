@@ -28,5 +28,15 @@ namespace OracleFormsAnalyzerLib.Objetos
         {
             return mostrarBarraRolagem == "Sim" || mostrarBarraRolagem == "Yes";
         }
+        
+        public bool isMultirecord()
+        {
+        	int numRegistros = 0;
+        	try {
+        		numRegistros = int.Parse(numeroRegistrosExibidos);	
+        	} catch (Exception) {}
+        	
+        	return numRegistros>1;
+        }
     }
 }

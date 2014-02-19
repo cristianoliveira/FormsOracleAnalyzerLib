@@ -21,7 +21,7 @@ namespace OracleFormsAnalyzerLib
         Linguagem linguagem  = Linguagem.Portugues;
         int _indiceAtual = 0;
         int indiceAtual { get { return _indiceAtual; } }
-
+        
         Regex regex;
 
         List<string> blocosDefault = new List<string> { "CONTROLE", "TABS", "TOOLBAR", "PROCESSOS", "LOGOEMP", "TEMPRESAS" };
@@ -43,6 +43,28 @@ namespace OracleFormsAnalyzerLib
         {
             linguagem = pLinguagem;
         }
+
+        public bool isLabel(string pLinha, string pLabel)
+        {
+            regex = new Regex(@" ([\*\-o\^]) (" + pLabel.Trim() + ") ");
+            return regex.IsMatch(pLinha);
+            //var match = Regex.Match(pLinha, @"^ ([\*\-o\^]) ("+pLabel.Trim()+") ");
+            //return match.Success;
+        }
+
+        internal bool isValor(string linha, string valor)
+        {
+            return linha.Contains(valor);
+        }
+
+        internal string getValor(string valor)
+        {
+            string returno = null;
+            string linha = linhasArquivo[indiceAtual];
+            returno = linha.Substring(linha.IndexOf(valor) + valor.Length).Trim();
+            return returno;
+        }
+
 
         public List<Bloco> getBlocks(bool pFiltraBlocosDefault) 
         {
@@ -426,7 +448,7 @@ namespace OracleFormsAnalyzerLib
                             else
                                 fimDaTrigger = true;
                         }
-                        trigger.DispararModoConsultar = getValor("Disparar no Modo Entrar Consultar");
+                        trigger.dispararModoConsultar = getValor("Disparar no Modo Entrar Consultar");
                     }
                     else if (linha.Contains(" Hirarquia de Execução "))
                         trigger.HirarquiaExecucao = getValor("Hirarquia de Execução");
@@ -469,7 +491,7 @@ namespace OracleFormsAnalyzerLib
                             i = indiceAtual;
                         }
                     }
-                    trigger.DispararModoConsultar = getValor("Fire in Enter-Query Mode");
+                    trigger.dispararModoConsultar = getValor("Fire in Enter-Query Mode");
                     }
                 else if (isLabel(linha, " Execution Hierarchy  "))
                         trigger.HirarquiaExecucao = getValor("Execution Hierarchy");
@@ -488,27 +510,6 @@ namespace OracleFormsAnalyzerLib
                 }
             }
             return listTrigger;
-        }
-
-        public bool isLabel(string pLinha, string pLabel)
-        {
-            regex = new Regex(@" ([\*\-o\^]) (" + pLabel.Trim() + ") ");
-            return regex.IsMatch(pLinha);
-            //var match = Regex.Match(pLinha, @"^ ([\*\-o\^]) ("+pLabel.Trim()+") ");
-            //return match.Success;
-        }
-
-        internal bool isValor(string linha, string valor)
-        {       
-            return linha.Contains(valor);
-        }
-
-        internal string getValor(string valor)
-        {
-            string returno = null;
-            string linha = linhasArquivo[indiceAtual];
-            returno = linha.Substring(linha.IndexOf(valor) + valor.Length).Trim();
-            return returno;
         }
 
         internal int pulaFimDadosBloco()

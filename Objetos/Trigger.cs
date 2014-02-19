@@ -9,7 +9,7 @@ namespace OracleFormsAnalyzerLib.Objetos
     {
         public string estiloGatilho         { get; set; }
         public string textoGatilho          { get; set; }
-        public string DispararModoConsultar { get; set; }
+        public string dispararModoConsultar { get; set; }
         public string HirarquiaExecucao     { get; set; }
     
     }

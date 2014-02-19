@@ -3,3 +3,13 @@ E:\projetos\GitHub\FormsOracleAnalyzerLib\obj\Debug\FormsAnalizerLib.pdb
 E:\projetos\GitHub\FormsOracleAnalyzerLib\bin\Debug\FormsAnalizerLib.dll
 E:\projetos\GitHub\FormsOracleAnalyzerLib\bin\Debug\FormsAnalizerLib.pdb
 E:\projetos\GitHub\FormsOracleAnalyzerLib\obj\Debug\OracleFormsAnalyzerLib.csprojResolveAssemblyReference.cache
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\bin\Debug\FormsAnalizerLib.dll
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\bin\Debug\FormsAnalizerLib.pdb
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\obj\Debug\OracleFormsAnalyzerLib.csprojResolveAssemblyReference.cache
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\obj\Debug\FormsAnalizerLib.dll
+E:\projetos\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\obj\Debug\FormsAnalizerLib.pdb
+C:\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\bin\Debug\FormsAnalizerLib.dll
+C:\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\bin\Debug\FormsAnalizerLib.pdb
+C:\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\obj\Debug\FormsAnalizerLib.dll
+C:\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\obj\Debug\FormsAnalizerLib.pdb
+C:\Dropbox\work\desktopProjects\ValidaPadraoFocco\FormsOracleAnalyzerLib\obj\Debug\OracleFormsAnalyzerLib.csprojResolveAssemblyReference.cache

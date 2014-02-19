@@ -40,14 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="newFormsAnalyzer.cs" />
     <Compile Include="FormsAnalyzer.cs" />
+    <Compile Include="Objetos\Alerta.cs" />
+    <Compile Include="Objetos\Biblioteca.cs" />
     <Compile Include="Objetos\Bloco.cs" />
+    <Compile Include="Objetos\Canvas.cs" />
     <Compile Include="Objetos\Componente.cs" />
     <Compile Include="Objetos\Form.cs" />
+    <Compile Include="Objetos\GrupoDeRegistros.cs" />
     <Compile Include="Objetos\Item.cs" />
+    <Compile Include="Objetos\ListaDeValores.cs" />
     <Compile Include="Objetos\SubClassificacao.cs" />
     <Compile Include="Objetos\Trigger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatorioObjetos.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
