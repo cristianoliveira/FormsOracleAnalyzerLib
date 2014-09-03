@@ -9,6 +9,8 @@ Uso
 ===
 Anexe a dll ao projeto e instancie a classe FormsAnalyser utilizando o metodo setLinhasArquivo(linhas[]) o retorno será uma instancia da classe Form contendo todas as caracteristicas do .FMB analisado.
 
+-------------------------------------------
+
 
 Lib to Interpret FMB Oracle Forms
 ===
